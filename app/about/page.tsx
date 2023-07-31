@@ -8,7 +8,6 @@ interface pageProps {
 export const metadata: Metadata = {
     title: "About us",
     description: "We are a social media company",
-    
 }
 
 const Page: React.FC<pageProps> = async () => {

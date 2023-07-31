@@ -1,6 +1,6 @@
 import React from "react";
-export const dynamic = "force-dynamic"
-export const revalidate = 420
+export const dynamic = "force-dynamic";
+export const revalidate = 1200;
 
 interface pageProps {
 	params: { slug: string };
@@ -12,19 +12,28 @@ interface Post {
 	slug: string;
 }
 
-const Page: React.FC<pageProps> = async ({params}) => {
-
+export async function generateStaticParams() {
 	const posts: Post[] = await fetch("http://localhost:3000/api/content").then(
 		(res) => res.json()
 	);
-    const post = posts.find((post) => post.slug === params.slug)!;
 
-    return (
-        <div>
-            <h1>{post.title}</h1>
-            <p>{post.content}</p>
-        </div>
-    );
+	return posts.map((post) => ({
+		slug: post.slug,
+	}));
+}
+
+const Page: React.FC<pageProps> = async ({ params }) => {
+	const posts: Post[] = await fetch("http://localhost:3000/api/content").then(
+		(res) => res.json()
+	);
+	const post = posts.find((post) => post.slug === params.slug)!;
+
+	return (
+		<div>
+			<h1>{post.title}</h1>
+			<p>{post.content}</p>
+		</div>
+	);
 };
 
 export default Page;
