@@ -11,6 +11,7 @@ export const metadata: Metadata = {
 }
 
 const Page: React.FC<pageProps> = async () => {
+
     return (
         <main>
             <h1>About</h1>
