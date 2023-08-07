@@ -1,3 +1,4 @@
+import { SignInButton } from "@/components/buttons";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -26,7 +27,7 @@ const NavMenu: React.FC<NavMenuProps> = () => {
 					<Link href={"/users"}>Users</Link>
 				</li>
 				<li>
-					<button>sign in</button>
+					<SignInButton/>
 				</li>
 			</ul>
 		</nav>

@@ -5,11 +5,27 @@ import Image from "next/image";
 import Link from "next/link";
 
 export function SignInButton() {
-    // const {data: session, status} = гыуЫуыышщт()
+    const {data: session, status} = useSession()
 
-	return <button></button>;
+	
+	
+	if(status === "authenticated") {
+		console.log(session.user);
+		return (
+			<Link href="/dashboard" >
+				<Image
+					src={session.user?.image ?? '/mememan.webp'}
+					width={32}
+					height={32}
+					alt="Your name"
+				/>
+			</Link>
+		)
+	}
+	
+	return <button onClick={() => signIn()} >Sign in</button>;
 }
 
 export function SignOutButton() {
-	return <button>Sign out</button>;
+	return <button onClick={() => signOut()} >Sign out</button>;
 }
