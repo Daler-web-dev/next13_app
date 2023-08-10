@@ -10,17 +10,17 @@ interface Props {
 
 export default function UserCard({ id, name, age, image }: Props) {
 	return (
-		<div className="w-full flex flex-col gap-2 p-2" >
+		<div className="w-full flex flex-col gap-2 p-2 h-[500px] " >
 			<img
 				src={image ?? "/mememan.webp"}
 				alt={`${name}'s profile`}
-				className="w-full h-16"
+				className="w-full object-cover "
 			/>
 			<div className="">
 				<h3>
 					<Link href={`/users/${id}`}>{name}</Link>
 				</h3>
-				<p>Age: {age}</p>
+				<p>Age: {age || "unknown"}</p>
 			</div>
 		</div>
 	);
