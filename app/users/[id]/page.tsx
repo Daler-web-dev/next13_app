@@ -18,15 +18,14 @@ const UserPrifile: React.FC<Props> = async ({ params }) => {
 
 	const { name, bio, image } = user ?? {};
 
-    console.log(user);
-    
-
+   
 	return (
 		<div>
 			<h1>{name}</h1>
 			<img src={image ?? ""} alt={`${name}'s profile`} />
 			<h3>BIO</h3>
 			<p>{bio}</p>
+            <button>remove this user</button>
 		</div>
 	);
 };

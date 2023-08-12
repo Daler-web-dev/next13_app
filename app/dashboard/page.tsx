@@ -1,3 +1,4 @@
+import { ProfileForm } from "@/components/ProfileForm";
 import { prisma } from "@/lib/prisma";
 import { authOptions } from "@/utils/authOption";
 import { getServerSession } from "next-auth";
@@ -16,11 +17,13 @@ const Dashboard: React.FC<Props> = async () => {
 	const currentUserEmail = session?.user?.email!
 	const user = await prisma.user.findUnique({
 		where: {
-			email: currentUserEmail
+			email: currentUserEmail,
 		}
 	})
 
-	return <div>DASHBOARD</div>;
+	return <div>
+		<ProfileForm/>
+	</div>;
 };
 
 export default Dashboard;

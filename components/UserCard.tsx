@@ -1,3 +1,4 @@
+'use client'
 import Link from "next/link";
 import styles from "./UserCard.module.css";
 
@@ -9,6 +10,15 @@ interface Props {
 }
 
 export default function UserCard({ id, name, age, image }: Props) {
+	async function removeUser () {
+		const res = await fetch('/api/users?id=' + id, {
+			method: "DELETE",
+		})
+
+		const data = await res.json()
+
+		console.log(data);
+	}
 	return (
 		<div className="w-full flex flex-col gap-2 p-2 h-[500px] " >
 			<img
@@ -22,6 +32,10 @@ export default function UserCard({ id, name, age, image }: Props) {
 				</h3>
 				<p>Age: {age || "unknown"}</p>
 			</div>
+			<button 
+				onClick={removeUser}
+				className="p-2 text-white bg-red-500 hover:bg-red-200" 
+			>delete</button>
 		</div>
 	);
 }
