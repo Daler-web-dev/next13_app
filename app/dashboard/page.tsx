@@ -21,8 +21,11 @@ const Dashboard: React.FC<Props> = async () => {
 		}
 	})
 
+	console.log(user);
+	
+
 	return <div>
-		<ProfileForm/>
+		<ProfileForm user={user} />
 	</div>;
 };
 

@@ -25,7 +25,6 @@ const UserPrifile: React.FC<Props> = async ({ params }) => {
 			<img src={image ?? ""} alt={`${name}'s profile`} />
 			<h3>BIO</h3>
 			<p>{bio}</p>
-            <button>remove this user</button>
 		</div>
 	);
 };
