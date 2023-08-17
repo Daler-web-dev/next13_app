@@ -1,3 +1,4 @@
+import FollowButton from "@/components/FollowButton/FollowButton";
 import { prisma } from "@/lib/prisma";
 import { Metadata } from 'next';
 import React from "react";
@@ -25,6 +26,7 @@ const UserPrifile: React.FC<Props> = async ({ params }) => {
 			<img src={image ?? ""} alt={`${name}'s profile`} />
 			<h3>BIO</h3>
 			<p>{bio}</p>
+			<FollowButton targetUserId={params.id} />
 		</div>
 	);
 };
